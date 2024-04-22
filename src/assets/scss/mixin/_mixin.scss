@@ -1,0 +1,77 @@
+// RWD
+@mixin M() {
+    @media all and (min-width: 480px) {
+        //Mobile 480px;
+        @content;
+    }
+}
+
+@mixin T() {
+    @media all and (min-width: 768px) {
+        //Tablet 768px;
+        @content;
+    }
+}
+
+@mixin PC() {
+    @media all and (min-width: 1024px) {
+        //PC 1024px
+        @content;
+    }
+}
+
+
+//格線系統
+@mixin grid($col, $b: null) {
+    @if $b ==null {
+        @for $i from 1 through $col {
+            .col-#{$i} {
+                width: calc(100% / $col) * $i;
+            }
+        }
+    }
+
+    @else {
+        @for $i from 1 through $col {
+            .col-#{$b}-#{$i} {
+                width: calc(100% / $col) * $i;
+            }
+        }
+    }
+}
+
+
+
+//字體
+@mixin h2(){
+    font-size: $h2;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: .2rem;
+}
+.h2{
+    @include h2;
+}
+@mixin text(){
+    font-size: $text;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: .2rem;
+}
+.text{
+    @include text;
+}
+@mixin h1(){
+    font-size: $h1;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: .2rem;
+}
+.h1{
+    @include h1;
+}
+@mixin h3(){
+    font-size: $h3;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: .2rem;
+}
+.h3{
+    @include h3;
+}
