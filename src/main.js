@@ -1,4 +1,5 @@
-import './assets/main.css'
+//樣式
+import "./assets/scss/style.scss"
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
@@ -6,8 +7,9 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-//樣式
-import "./assets/scss/style.scss"
+
+//引入fontawesome
+import '@fortawesome/fontawesome-free/css/all.css'
 
 const app = createApp(App)
 

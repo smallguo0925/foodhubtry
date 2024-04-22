@@ -3,6 +3,9 @@ $h2:20px;
 $h3:18px;
 $text:16px;
 
+//引用google font open sans
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 body{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Open Sans', sans-serif;
 }
