@@ -1,12 +1,21 @@
 #header{
+    width: 100%;
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+
     .headerWrapper{
+        max-width: $max-width;
         display: flex;
         padding: 4px 20px;
         height: 56px;
         align-items: center;
         justify-content: space-between;
         position: sticky;
-        box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+        .headerLeft{
+            display: flex;
+        }
+        .headerRight{
+            display: flex;
+        }
         .logo{
 
             img{
@@ -14,18 +23,52 @@
                 max-width: 46px;
                 vertical-align: top;
             }
+
+            @include T{
+                margin-right: 40px;
+            }
         }
         .localSearchContent{
             display: none;
-            @include T{
+            height: 56px;
+            @include PC{
                 display: flex;
+                align-items: center;
+                justify-content: space-between;
+                opacity: .7;
+                border: 1px solid rgba($color: $black, $alpha: 0.2);
+                border-radius: 4px;
+                height: 44px;
+                padding: 0 20px;
+                input{
+                    border: none;
+                    flex-grow: 1;
+                    outline: none;
+                }
+                button{
+                    border: none;
+                    background-color: rgba($color: $white, $alpha: 0.2);
+                }
+                .local{
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    margin:0 10px;
+                }
+                .gps{
+                    width: 100%;
+                    max-width: 19px;
+                    vertical-align: top;
+                    opacity: 0.8;
+                    cursor: pointer;
+                    margin: 0 10px;
+                }
             }
-
         }
         .account{
             display: flex;
             align-items: center;
-            padding-left: 16px;
+            gap: 10px;
             img{
                 width: 100%;
                 max-width: 19px;
@@ -48,13 +91,22 @@
             border: none;
             background-color: rgba($color: $white, $alpha: 0);
         }
+        .hamWrapper{
+            top: 0px;
+            left: 0;
+            transform: translateX(0%);
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            background-color: rgba($color: $black, $alpha: 0.2);
+        }
         .openMenu{
             height: 100%;
             top: 0px;
             left: 0;
             transform: translateX(0%);
-            position: fixed;
-            width: 80%;
+            position: relative;
+            width: 300px;
             background-color: #666;
             display: flex;
             flex-direction: column;
@@ -64,6 +116,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                color: $white;
             }
         }
     }

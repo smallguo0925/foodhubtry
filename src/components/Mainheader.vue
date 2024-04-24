@@ -1,54 +1,48 @@
 <template>
   <div id="header">
     <div class="headerWrapper container">
-      <div class="logo">
-          <img src="../assets/images/foodhub-logo.png" alt="logo">
-      </div>
-      <div class="localSearchContent">
-        <div class="local">
-          <i class="fa-solid fa-location-dot"></i>
-          <span class="localName">New York</span>
+        <div class="logo">
+            <img src="../assets/images/foodhub-logo.png" alt="logo">
         </div>
-        <div class="gps">
-          <button><img src="../assets/images/gpsIcon.svg" alt="gps"></button>
-        </div>
-        <div class="searchBar">
-          <input type="text" placeholder="Search for restaurant ">
-          <button>
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
-
-      </div>
-
-      <div class="account">
-          <img src="../assets/images/accountIcon.svg" alt="account">
-          <span class="accountName">ACCOUNT</span>
-      </div>
-      <div class="cart">
-        <i class="fa-solid fa-cart-shopping"></i>
-        <span>(8)</span>
-      </div>
-      <!-- 漢堡 -->
-      <button class="menu" @click="Openmenu()">
-        <i class="fa-solid fa-bars"></i>
-      </button>
-      <transition name="slide-left">
-        <aside class="hamWrapper openMenu" v-if="menuOpen">
-          <div class="hamTitle">
-            <span>Navbar</span>
-            <i class="fa-solid fa-xmark  closeIcon"  @click="Openmenu()"></i>
+        <div class="localSearchContent">
+          <div class="local">
+            <i class="fa-solid fa-location-dot"></i>
+            <span class="localName">New York</span>
           </div>
+        
+          <img src="../assets/images/gpsIcon.svg" alt="gps" class="gps">
+        
+          <div class="searchBar">
+            <input type="text" placeholder="Search for restaurant ">
+            <button>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
 
+        <div class="account">
+            <img src="../assets/images/accountIcon.svg" alt="account">
+            <span class="accountName">ACCOUNT</span>
+        </div>
+        <div class="cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span>(8)</span>
+        </div>
+        <!-- 漢堡 -->
+        <button class="menu" @click="Openmenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      <!--  漢堡選單 -->
+      <transition name="slide-left">
+        <aside class="hamWrapper " v-if="menuOpen">
+          <div class="openMenu">
+            <div class="hamTitle">
+              <span>Navbar</span>
+              <i class="fa-solid fa-xmark  closeIcon"  @click="Openmenu()"></i>
+            </div>
+          </div>
         </aside>
       </transition>
-
-
-
-
-
-
-
     </div>
 
 

@@ -1,4 +1,5 @@
 .container {
+    display: flex;
     --column-gap: 10px;
     max-width:$max-width;
     margin: auto;
