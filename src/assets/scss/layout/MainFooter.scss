@@ -1,12 +1,26 @@
 #mainFooter{
+    .row{
+        
+        margin-left: 0; 
+        margin-right: 0;
+    }
+    padding: 12px;
     .container{
-        padding: 64px 0;
+        padding: 64px 12px;
     }
     .content{
         margin-bottom: 12px;
     }
     h2{
         margin-bottom: 16px;
+        // font-family: 'Open Sans', sans-serif;
+        color: black;
+    }
+    h3{
+        font-size: $h2;
+        margin-bottom: 16px;
+        font-family: 'Open Sans', sans-serif;
+        color: black;
     }
 
     .topFooter{
@@ -46,7 +60,7 @@
             }
         }
         .col-PC-3{
-            padding: 10px;
+            padding: 10px 0;
         }
         .bottomFooterLogo{
             display: flex;

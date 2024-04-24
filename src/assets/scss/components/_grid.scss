@@ -3,14 +3,14 @@
     --column-gap: 10px;
     max-width:$max-width;
     margin: auto;
-    // padding-left: var(--column-gap);
-    // padding-right: var(--column-gap);
+    padding-left: var(--column-gap);
+    padding-right: var(--column-gap);
   }
   .row {
     display: flex;
     flex-wrap: wrap;
-    // margin-left: calc(var(--column-gap) * -1);
-    // margin-right: calc(var(--column-gap) * -1);
+    margin-left: calc(var(--column-gap) * -1);
+    margin-right: calc(var(--column-gap) * -1);
   }
   
   // class 名格式 col-12

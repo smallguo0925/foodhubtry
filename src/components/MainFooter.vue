@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="col-PC-3 col-T-6 col-12">
-                    <h2>About Us</h2>
+                    <h3>About Us</h3>
                     <div class="content" v-for=" item in about">
                         <a href="">
                             {{ item }}
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="col-PC-3 col-T-6 col-12">
-                    <h2>Customer Care</h2>
+                    <h3>Customer Care</h3>
                     <div class="content" v-for=" item in CustomerCare">
                         <a href="">
                             {{ item }}
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class="col-PC-3 col-T-6 col-12">
-                    <h2>Contact Us</h2>
+                    <h3>Contact Us</h3>
                     <div class="content" v-for=" item in ContactUs">
                         {{ item }}
                     </div>

@@ -28,6 +28,7 @@
           <i class="fa-solid fa-cart-shopping"></i>
           <span>(8)</span>
         </div>
+        
         <!-- 漢堡 -->
         <button class="menu" @click="Openmenu()">
           <i class="fa-solid fa-bars"></i>

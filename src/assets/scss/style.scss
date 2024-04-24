@@ -1,8 +1,8 @@
 //變數
 @import "base/reset";
 @import "base/var";
-@import "base/font";
 @import "base/color";
+@import "base/font";
 
 //mixin
 @import "mixin/mixin";
@@ -13,6 +13,7 @@
 
 //組件
 @import "components/grid";
+@import "components/BackToTop";
 
 //頁面
 @import "page/HomeView";

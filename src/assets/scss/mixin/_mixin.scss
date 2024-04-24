@@ -46,6 +46,8 @@
 @mixin h2(){
     font-size: $h2;
     // letter-spacing: .1rem;
+    font-family: 'Open Sans', sans-serif;
+
 }
 h2{
     @include h2;
@@ -59,7 +61,7 @@ text{
 }
 @mixin h3(){
     font-size: $h3;
-    letter-spacing: .2rem;
+    letter-spacing: .1rem;
     
 }
 h3{
