@@ -1,0 +1,78 @@
+#mainFooter{
+    .container{
+        padding: 64px 0;
+    }
+    .content{
+        margin-bottom: 12px;
+    }
+    h2{
+        margin-bottom: 16px;
+    }
+
+    .topFooter{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        a{
+            @include text;
+            letter-spacing: .05rem;
+            font-weight: 400;
+            margin-bottom: 12px;
+            color:rgba($black, $alpha: .9);
+            span{
+                color: rgba(gray, $alpha: .5);
+            }
+        }
+
+
+
+
+    }
+
+    .logo{
+        width: 100%;
+        max-width: 48px;
+        vertical-align: top;
+        margin-bottom: 12px;
+    }
+    .bottomFooter{
+        @include text;
+        a{
+            @include text;
+            color:rgba(81, 90, 110, $alpha: 1);
+            &:hover{
+                color: $mp;
+            }
+        }
+        .col-PC-3{
+            padding: 10px;
+        }
+        .bottomFooterLogo{
+            display: flex;
+            flex-direction: column;
+        
+            .donloadApp{
+                display: flex;
+                gap: 20px;
+                img{
+                    height: 45px; 
+                    min-width: 48px; 
+                    width: 120px;
+                }
+            }
+        }
+        .icons{
+            display: flex;
+            i{
+                margin-right:8px;
+                border-radius: 50%;
+                background-color: rgba($white, $alpha: 0);
+            }
+        }
+    }
+    
+
+
+
+}
