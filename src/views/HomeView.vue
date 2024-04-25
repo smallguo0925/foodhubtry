@@ -110,42 +110,16 @@
       <div class="popularContent container">
         <h2>Popular Near You</h2>
         <div class="row">
-          <div class="col-PC-3 col-T-4 col-12 popularCard" v-for="(item,index) in popular1">
-            <span class="tags" v-if="item.tag">
-              Flat 30% Off
-            </span>
-            <img :src="getImageUrl(`popular${index+1}.jpg`)" alt="popularPic">
-            <div class="bottomCard">
-              <div class="popularTitle">
-                <h2>{{ item.name }}</h2>
-                <span>
-                  <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                  <span style="font-weight: bold;">4.5</span>/5
-                </span>
-              </div>
-              <div class="popularPrice">
-                <span>$20</span>• Cofee, set menu • 15 - 20 min
-              </div>
-            </div>
-          </div>
-          <div class="col-PC-3 col-T-4 col-12 popularCard" v-for="(item,index) in popular2">
-            <span class="tags" v-if="item.tag">
-              Flat 30% Off
-            </span>
-            <img :src="getImageUrl(`popular${index+1}.jpg`)" alt="popularPic">
-            <div class="bottomCard">
-              <div class="popularTitle">
-                <h2>{{ item.name }}</h2>
-                <span>
-                  <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                  <span style="font-weight: bold;">4.5</span>/5
-                </span>
-              </div>
-              <div class="popularPrice">
-                <span>$20</span>• Cofee, set menu • 15 - 20 min
-              </div>
-            </div>
-          </div>
+          <productCard v-for="(item,index) in popular1"
+            :name="item.name"
+            :tag="item.tag"
+            :img="getImageUrl(`popular${index+1}.jpg`)"
+          />
+          <productCard v-for="(item,index) in popular2"
+            :name="item.name"
+            :tag="item.tag"
+            :img="getImageUrl(`popular${index+1}.jpg`)"
+          />
         </div>
       </div>
     </section>
@@ -180,6 +154,7 @@
 
     </section>
 
+
   </div>
 </template>
 
@@ -189,6 +164,7 @@
 <script>
 import { RouterLink } from "vue-router";
 import Mainheader from "@/components/Mainheader.vue"
+import productCard from "@/components/productCard.vue"
 
 export default {
   data() {
@@ -240,6 +216,7 @@ export default {
   },
   components:{
     Mainheader,
+    productCard,
   },
 }
 </script>
