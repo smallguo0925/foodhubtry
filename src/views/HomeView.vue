@@ -110,12 +110,12 @@
       <div class="popularContent container">
         <h2>Popular Near You</h2>
         <div class="row">
-          <productCard v-for="(item,index) in popular1"
+          <productCard class="col-PC-3 col-T-4 col-12" v-for="(item,index) in popular1"
             :name="item.name"
             :tag="item.tag"
             :img="getImageUrl(`popular${index+1}.jpg`)"
           />
-          <productCard v-for="(item,index) in popular2"
+          <productCard class="col-PC-3 col-T-4 col-12" v-for="(item,index) in popular2"
             :name="item.name"
             :tag="item.tag"
             :img="getImageUrl(`popular${index+1}.jpg`)"

@@ -1,0 +1,191 @@
+#RestaurantTwo{
+    margin: 38px auto;
+    position: relative;
+
+    .container{
+        flex-direction: column;
+        
+        
+        .bread{
+            padding: 18px 12px;
+            @include text;
+            a{
+                color: rgba($color: $black, $alpha: .8)
+            }
+            i{
+                padding: 0 12px;
+            }
+            span{
+                color: rgba($color: $black, $alpha: .5);
+            }
+        }
+        .filter{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            button{
+                @include text;
+                letter-spacing: .1rem;
+                border-radius: 4px;
+                color: $white;
+                padding: 5px 16px;
+                background-color: rgba($color: $mp, $alpha: 1);
+                border: none;
+                box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+            }
+            .typeFilter{
+                display: flex;
+                .type{
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    padding:16px;
+                    position: relative;
+                    min-width: 90px;
+                    max-width: 360px;
+                    text-align: center;
+                    letter-spacing: .1rem;
+                    &:hover{
+                        background-color: rgba($color: $black, $alpha: .02);
+                    }
+                    .typeHover::before{
+                        display: block;
+                        position: absolute;
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        top: 0;
+                        left: 0;
+                        background-color: rgba($color: $mp, $alpha: .1);
+                        transition: 3s cubic-bezier(0.165, 0.84, 0.44, 1);
+
+                    }
+                    .underline{
+                        display: block;
+                        position: absolute;
+                        width: 100%;
+                        height: 2px;
+                        transition:0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+                        background-color: $mp;
+                        bottom: 0;
+                        left: 0;
+                    }
+                }
+            }
+        }
+        .menuWrapper{
+            .box{
+                display: flex;
+                .menuLeft{
+                    // display: none;
+                    @include text;
+                    width: 280px;
+                    height: 100%;
+                    transition: all .3s ease-in;
+                    position: fixed;
+                    top: 0;
+                    left: 0px;
+                    // overflow-y: scroll;
+                    background-color: $white;
+                    z-index: 5;
+                    @include T{
+                        position: relative;
+                        border-right: 1px solid rgba($color: $black, $alpha: .3);
+
+                    }
+                    padding:30px 12px;
+                    h3{
+                        font-size: 14px;
+                        letter-spacing:.01rem;
+                        font-weight: 700;
+                        color: $black;
+                    }
+                    .categoriesTitle{
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        i{
+                            @include T{
+                                display: none;
+                            }
+                        }
+                    }
+                    .categories{
+                        margin: 12px 0;
+
+                    }
+                    .categoriesOptions,.sortBy{
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                        input:checked{
+                            background-color: rgba($color: $black, $alpha: .8);
+                        }
+                    }
+                }
+                .menuLeft::after{
+                    display: block;
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    content: '';
+                    width: calc(100% - 280px);
+                    height: 100%;
+                    background-color: rgba($color: $black, $alpha: .5);
+                    z-index: 4;
+                    @include T{
+                        display: none;
+                    }
+                }
+                .menuRight{
+                    
+                    padding: 0 12px;
+                    flex: 1 0 ;
+                    .showCategories{
+                        display: flex;
+                        gap: 10px;
+                        justify-content: center;
+                        align-items: center;
+                        @include text;
+                        letter-spacing: .1rem;
+                        border-radius: 4px;
+                        color: $white;
+                        padding: 8px 16px;
+                        background-color: rgba($color: $mp, $alpha: 1);
+                        border: none;
+                        box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+                        @include T{
+                            display: none;
+                        }
+                    }
+
+                    h2{
+                        padding-left: 12px;
+                    }
+                    @include T{
+                        width: calc(100% - 280px);
+                    }
+
+                }   
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+}

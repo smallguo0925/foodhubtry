@@ -1,5 +1,5 @@
 <template>
-    <div class="col-PC-3 col-T-4 col-12 popularCard">
+    <div class="popularCard">
         <span class="tags" v-if="tag">
             Flat 30% Off
         </span>
