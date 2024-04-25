@@ -1,0 +1,55 @@
+.popularCard{
+    position: relative;
+    border: 1px solid rgba($color: $black, $alpha: 0.2);
+    border-radius: 8px;
+    gap: 16px;
+    max-width: 275px;
+    margin: 12px;
+    .tags{
+        position: absolute;
+        top: 10px;
+        left: 0;
+        background-color: $mp;
+        padding: 6px 12px ;
+        color: $white;
+        @include text;
+        border-radius: 0px 16px 16px 0;
+    }
+    img{
+        width: 100%;
+        // max-width: 275px;
+        vertical-align: top;
+        border-radius: 8px 8px 0 0;
+    }
+    .bottomCard{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 275px;
+
+    }
+    .popularTitle{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px;
+        h2{
+            font-size: 18px;
+            color: $black;
+        }
+        span{
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+    }
+    .popularPrice{
+        padding: 12px;
+        @include text;
+        span{
+            color: $mp;
+            font-weight: bold;
+            margin-right: 4px;
+        }
+    }
+}
