@@ -33,7 +33,7 @@
             <div class="menuWrapper row">
                 <div class="col-PC-12 col-12">
                     <div class="box">
-                        <div class="menuLeft">
+                        <div class="menuLeft" :class="{ 'mobileMenu': mobileShowCategories}" v-if="CategoriesOpen">
                             <div class="categoriesContent ">
                                 <div class="categoriesTitle">
                                     <h3>Categories</h3>
@@ -65,12 +65,15 @@
 
                                 <div class="cost">
                                     <h3>Cost per person</h3>
-
+                                    <div class="sliderBox">
+                                        <Slider v-model="costValue" range :step="10" show-tip="always">
+                                        </Slider>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="menuRight row">
-                            <button type="button" class="showCategories">
+                            <button type="button" class="showCategories" @click="OpenCategories()">
                                 <i class="fa-solid fa-bars"></i>
                                 Categories
                             </button>
@@ -100,7 +103,9 @@ export default {
 
     data() {
         return {
-            CategoriesOpen:false,
+            costValue:[0,100],
+            mobileShowCategories:window.innerWidth < 768,
+            CategoriesOpen:true,
             filterTypeActive: 0,
             prod: [
                 { name: 'Starbucks', tag: true, type: 'Pizza' },
@@ -122,8 +127,27 @@ export default {
         OpenCategories() {
         this.CategoriesOpen = !this.CategoriesOpen
         },
-
-
+        handelResize(){
+            //視窗小於768px
+            this.mobileShowCategories = window.innerWidth < 768;
+            if (this.mobileShowCategories) {
+                this.CategoriesOpen=false
+            }else{
+                this.CategoriesOpen=true
+            }
+        },
+        handleClickOutside(e) {
+            const mobileMenu = document.querySelector('.mobileMenu');
+            if (mobileMenu && !mobileMenu.contains(e.target)) {
+                this.OpenCategories();
+            }
+        },
+    },
+    mounted() {
+        window.addEventListener('resize', this.handelResize);
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.handelResize);
     },
     components: {
         productCard,

@@ -31,6 +31,7 @@
                 border-radius: 4px;
                 color: $white;
                 padding: 5px 16px;
+                margin: 16px 0;
                 background-color: rgba($color: $mp, $alpha: 1);
                 border: none;
                 box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
@@ -76,26 +77,21 @@
             }
         }
         .menuWrapper{
+            
             .box{
                 display: flex;
                 .menuLeft{
-                    // display: none;
                     @include text;
                     width: 280px;
                     height: 100%;
                     transition: all .3s ease-in;
-                    position: fixed;
+                    position: relative;
                     top: 0;
                     left: 0px;
-                    // overflow-y: scroll;
                     background-color: $white;
                     z-index: 5;
-                    @include T{
-                        position: relative;
-                        border-right: 1px solid rgba($color: $black, $alpha: .3);
-
-                    }
                     padding:30px 12px;
+                    border-right: 1px solid rgba($color: $black, $alpha: .2);
                     h3{
                         font-size: 14px;
                         letter-spacing:.01rem;
@@ -107,6 +103,7 @@
                         align-items: center;
                         justify-content: space-between;
                         i{
+                            cursor: pointer;
                             @include T{
                                 display: none;
                             }
@@ -124,8 +121,58 @@
                             background-color: rgba($color: $black, $alpha: .8);
                         }
                     }
+                    .cost{
+                        margin: 60px 0;
+                        .sliderBox{
+                            margin: 60px 0;
+                            .ivu-tooltip-inner {
+                                /* max-width: 50px; */
+                                display: flex;
+                                width: 40px;
+                                min-height: 25px;
+                                padding: 8px 12px;
+                                color: #fff;
+                                text-align: center;
+                                text-decoration: none;
+                                background-color: rgba($color: $mp, $alpha: 1);
+                                border-radius: 50%;
+                                -webkit-box-shadow: 0 1px 6px rgba(0,0,0,.2);
+                                box-shadow: 0 1px 6px rgba(0,0,0,.2);
+                                white-space: nowrap;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                            .ivu-tooltip-popper[x-placement^=top] .ivu-tooltip-arrow {
+                                bottom: 3px;
+                                border-width: 5px 5px 0;
+                                border-top-color:rgba($color: $mp, $alpha: 1);
+                            }
+
+                            .ivu-slider-bar {
+                                height: 2px;
+                                background: $mp;
+                                border-radius: 3px;
+                                position: absolute;
+                            }
+                            .ivu-slider-button {
+                                width: 12px;
+                                height: 12px;
+                                border: 2px solid $mp;
+                                border-radius: 50%;
+                                background-color: $mp;
+                                -webkit-transition: all .2s linear;
+                                transition: all .2s linear;
+                                outline: 0;
+                            }
+                        }
+                    }
                 }
-                .menuLeft::after{
+
+                .mobileMenu{
+                    position: fixed;
+                    transition: left 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+                }
+                .mobileMenu::after{
                     display: block;
                     position: fixed;
                     top: 0;
@@ -174,6 +221,7 @@
                 }   
             }
         }
+
     }
 
 
