@@ -10,17 +10,19 @@
             </ul>
             <div class="filter">
                 <div class="typeFilter">
-                    <div class="type" @click="activeType(0)">
+                    <div class="type" @click="activeType(0)" :class="{'tabActive' : filterTypeActive === 0}">
                         Delivery
                         <span :class="{ 'underline': filterTypeActive === 0 }"></span>
                         <span :class="{ 'typeHover': filterTypeActive === 0 }"></span>
                     </div>
-                    <div class="type" @click="activeType(1)">
+                    <div class="type" @click="activeType(1)"
+                    :class="{'tabActive' : filterTypeActive === 1}">
                         Dining Out
                         <span :class="{ 'underline': filterTypeActive === 1 }"></span>
                         <span :class="{ 'typeHover': filterTypeActive === 1 }"></span>
                     </div>
-                    <div class="type" @click="activeType(2)">
+                    <div class="type" @click="activeType(2)"
+                    :class="{'tabActive' : filterTypeActive === 2}">
                         Nightlife
                         <span :class="{ 'underline': filterTypeActive === 2 }"></span>
                         <span :class="{ 'typeHover': filterTypeActive === 2 }"></span>

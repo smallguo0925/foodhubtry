@@ -1,0 +1,21 @@
+#foodMenu{
+    flex-direction: column;
+    margin: 20px 0;
+    .bread{
+        padding: 18px 12px;
+        @include text;
+        a{
+            color: rgba($color: $black, $alpha: .8)
+        }
+        i{
+            padding: 0 12px;
+        }
+        span{
+            color: rgba($color: $black, $alpha: .5);
+        }
+    }
+
+
+
+
+}
