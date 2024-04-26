@@ -1,21 +1,87 @@
 #foodMenu{
-    flex-direction: column;
     margin: 20px 0;
-    .bread{
-        padding: 18px 12px;
-        @include text;
-        a{
-            color: rgba($color: $black, $alpha: .8)
+    .foodMenuContent{
+        flex-direction: column;
+
+        .bread{
+            padding: 18px 12px;
+            @include text;
+            a{
+                color: rgba($color: $black, $alpha: .8)
+            }
+            i{
+                padding: 0 12px;
+            }
+            span{
+                color: rgba($color: $black, $alpha: .5);
+            }
         }
-        i{
-            padding: 0 12px;
+        
+        .foodinfo{
+            .imgWrapper{
+                overflow: hidden;
+            }
+            .bigPic{
+                padding: 4px;
+                .pic{
+                    padding-bottom: 76.5%;
+                    background-image: url(@/assets/images/foodMenu1.png);
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-size: cover;
+                }
+            }
+            .smallPic{
+                padding: 4px;
+                img{
+                    width: 100%;
+
+                }
+            }
+            .menuText{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+            .titleAndStar{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 6px 0;
+                padding: 4px;
+                @include text;
+                color: $black;
+                h2{
+                    @include h2;
+                    font-size: 30px;
+                }
+                span{
+                    color: gray;
+                }
+            }
+            .contentText{
+                display: flex;
+                align-items: center;
+                @include text;
+                color: gray;
+                letter-spacing: .02rem;
+                i{
+                    margin-right: 8px;
+                }
+                .showMap{
+                    color: $black;
+                    text-decoration: underline;
+                }
+                .starbucks{
+                    color: gray;
+                }
+                span{
+                    color: $mp;
+                    margin-right: 6px;
+                }
+            }
         }
-        span{
-            color: rgba($color: $black, $alpha: .5);
-        }
+
+
     }
-
-
-
-
 }
