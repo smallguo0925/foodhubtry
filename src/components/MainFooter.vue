@@ -9,9 +9,9 @@
                 <div class="topFooter row">
                     <div class="col-PC-3 col-T-6 col-12" v-for="num in 4">
                         <div class="col-PC-12 content" v-for="(item,index) in popular">
-                            <a href="">
+                            <RouterLink to="/ResturantTwoColumn" >
                                 {{ item }}<span>{{ places[index] }}</span>
-                            </a>
+                            </RouterLink>
                         </div>
                     </div>
                 </div>
@@ -65,8 +65,8 @@
 </template>
 
 <script>
+    import { RouterLink } from "vue-router";
 export default {
-
     data() {
         return {
             popular:['Newport','Brooklyn','Chinatown','Chelsea','Coney Island'],

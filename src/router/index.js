@@ -28,4 +28,9 @@ const router = createRouter({
   ]
 })
 
+router.beforeEach((to, from, next) => {
+  // 每次路由切換的時後回到頂部
+  window.scrollTo(0, 0);
+  next();
+});
 export default router

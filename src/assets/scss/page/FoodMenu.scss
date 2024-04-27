@@ -5,6 +5,8 @@
         flex-direction: column;
 
         .bread {
+            display: flex;
+            align-items: center;
             padding: 18px 12px;
             @include text;
 

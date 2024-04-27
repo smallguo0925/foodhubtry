@@ -69,3 +69,10 @@ text{
 h3{
     @include h3;
 }
+
+@mixin a(){
+    display: block;
+}
+a{
+    @include a;
+}

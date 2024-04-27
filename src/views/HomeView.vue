@@ -68,8 +68,10 @@
       <div class="cardContent container">
         <div class="row">
           <div class="col-PC-3 col-T-4 col-12 menuCard" v-for="(item,index) in goToMenu">
-            <img :src="getImageUrl(`goToMenu${index+1}.jpg`)" alt="gotomenu">
-            <span>{{ item }}</span>
+            <RouterLink to="/foodmenu">
+              <img :src="getImageUrl(`goToMenu${index+1}.jpg`)" alt="gotomenu">
+              <span>{{ item }}</span>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -98,9 +100,12 @@
       <div class="browseContent container">
         <h2>Browse By Cuisine</h2>
         <div class="row" >
+          
           <div class="col-PC-2 col-T-4 col-12 circleOfBrowse" v-for="(item,index) in browse">
-            <img :src="getImageUrl(`browse${index+1}.png`)" alt="browsePic">
-            {{ item }}
+            <RouterLink to="/foodmenu">
+              <img :src="getImageUrl(`browse${index+1}.png`)" alt="browsePic">
+              {{ item }}
+            </RouterLink>
           </div>
         </div>
       </div>
