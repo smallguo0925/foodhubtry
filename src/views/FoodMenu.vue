@@ -59,16 +59,169 @@
 
             </div>
 
+            <div class="menuWrapper row">
+                <div class="col-PC-12 col-12">
+                    <div class="tagsWrapper" >
+                        <div class="tags" v-for="(tag,index) in menuTags" :key="index" @click="activeTags(index)"
+                        :class="{'tabActive' : tagsActive === index}"
+                        >
+                            {{ tag }}
+                            <span :class="{ 'underline': tagsActive === index }"></span>
 
+                        </div>
+                    </div>
 
+                    <div class="viewWrapper">
+                        <div class="viewItem" id="tab1" v-show="this.tabsOpen===0">
+                        <!-- 左邊選單右邊商品 -->
+                            <div class="row">
+                                <div class="col-12 col-PC-12">
+                                    <div class="boxWrapper">
+                                        <div class="typeOfProd" :class="{ 'mobileType': mobileShowCategories}" v-if="typeOpen">
+                                            <!-- 左邊選單 -->
+                                            <i class="fa-solid fa-x" @click="OpenCategories()"></i>
 
+                                            <div class="typeContent" v-for="(item,typeIndex) in typeofProd" 
+                                            @click="activeTypes(typeIndex)"
+                                            >
+                                                {{ item }}
+                                                <span :class="{'activeLine':typeActive===typeIndex}"></span>
+                                            </div>
+                                        </div>
+                                        <div class="prodList">
+                                            <button class="openType" @click="OpenCategories()">
+                                                <i class="fa-solid fa-bars"></i>
+                                                Categories
+                                            </button>
+                                            <h2 class="col-12">{{this.typeofProd[chooseIndex].replace(/\s*\(\d+\)/, '') }}</h2>
+                                            <div class="col-12 col-PC-12 prodContent" v-for="(prod,prodIndex) in prodContent">
+                                                <div class="prodCard"> 
+                                                    <div class="prodPic"></div>
+                                                    <div class="prodText">
+                                                        <h5>{{ prod.prodNam }}</h5>
+                                                        <span class="mustTry">MUST TRY</span>
+                                                        <span>
+                                                            <i class="fa-solid fa-star" style="color: #FFD43B;" v-for="num in 5"></i>
+                                                            　(57)
+                                                        </span>
+                                                        <p>
+                                                            <span class="twentyFive">$25</span>
+                                                            <span class="twentyTwo">$22.5</span>
+                                                            <span class="cost10">10% off</span>
+                                                        </p>
+                                                        <span>(4 Pcs mutton in chicken keema gravy)</span>
+                                                    </div>
+                                                </div>
+                                                <button class="add">
+                                                    ADD　+
+                                                </button>
 
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="viewItem" id="tab2" v-show="this.tabsOpen===1">
+                        <!-- 預約表單 -->
+                            <div class="row">
+                                <div class="col-12 col-T-6 col-PC-6 inputWrapper">
+                                    <div class="row">
+                                        <div class="selectbox col-12 col-T-6">
+                                            <select class="selectDate">
+                                                <option value="" selected disabled hidden>Seleted Date</option>
+                                                <option value="Foo">Foo</option>
+                                                <option value="Bar">Bar</option>
+                                                <option value="Fizz">Fizz</option>
+                                                <option value="Buzz">Buzz</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-T-6 selectbox">
+                                            <select class="numGuest">
+                                                <option value="" selected disabled hidden >Number of Guests</option>
+                                                <option value="Foo">Foo</option>
+                                                <option value="Bar">Bar</option>
+                                                <option value="Fizz">Fizz</option>
+                                                <option value="Buzz">Buzz</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-T-6 " v-for="(item,index) in inputPlaceholder">
+                                            <input type="text" :placeholder="inputPlaceholder[index]" class="inputBox">
+                                        </div>
+                                        <button type="button" class="bookBtn">BOOK</button>
+                                    </div>
+                                    
+                                </div>
+                                <div class="col-12 col-T-6 col-PC-6 imgBox">
+                                    <img src="../assets/images/download-app.c757568.png" alt="app">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="viewItem" id="tab3" v-show="this.tabsOpen===2">
+                        <!-- 評價 -->
+                            <div class="row">
+                                <div class="col-12 col-T-6 board">
+                                    <!-- 留言區 -->
+                                    <div class="allMsg" v-for="num in 3">
+                                        <div class="avatorName">
+                                            <!-- 頭像跟名字 -->
+                                            <img :src="getImageUrl(`people${num}.png`)" alt="avator">
+                                            <div class="name">
+                                                <h3>Abriella Bond</h3>
+                                                <span>2 Reviews, 9 Followers</span>
+                                            </div>
+                                        </div>
+                                        <div class="stars">
+                                            <!-- 星星評分 -->
+                                            <span><i class="fa-solid fa-star" style="color: #FFD43B;" v-for="num in 5"></i></span>
+                                            <p>4.0</p>
+                                            <span>3 Days Ago</span>
+                                        </div>
+                                        <div class="message">
+                                            <!-- 留言 -->
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Varius massa id ut mattis. Facilisis vitae gravida egestas ac account.</p>
+                                        </div>
+                                        <div class="messageImg " v-if="num!=3 && num!=2">
+                                            <img src="../assets/images/reviews1.png" alt="reviews">
+                                            <img src="../assets/images/reviews2.png" alt="reviews">
+                                        </div>
+                                        <div class="like">
+                                            <span>4 Likes, 2 Comments</span>
+                                        </div>
+                                        <div class="likeCommentBtn">
+                                            <button>
+                                                <i class="fa-regular fa-thumbs-up" style="color: gray;"></i>
+                                                Like
+                                            </button>
+                                            <button>
+                                                <i class="fa-regular fa-message" style="color: gray;"></i>
+                                                Comment
+                                            </button>
+                                            
+                                        </div>
+                                        <div class="msgReply" v-if="num!=3 && num!=2" v-for="n in 2">
+                                            <div class="replyAvator">
+                                                <img :src="getImageUrl(`people${n+1}.png`)" alt="replyAvator">
+                                                <h3>{{ this.people[1] }}</h3>
+                                            </div>
+                                            <div class="replyContent">
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Varius massa id ut mattis. Facilisis vitae gravida egestas ac account.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <div class="col-12 col-T-6 ">
+                                    <div class="imgBox"></div>
+                                </div>
 
+                            </div>
+                        </div>
+                    </div>
 
-
-
-
+                </div>
+            </div>
 
         </div>
     </div>
@@ -79,19 +232,72 @@ export default {
 
     data() {
         return {
-        
+            people:[
+                'Abriella Bond','Emmet McDermott','Abriella Bond'
+            ],
+            inputPlaceholder:['First Name','Last Name','Email','Phone'],
+            chooseIndex:0,
+            prodContent:[
+                {prodNam:'Tandoori Chicken (Full)',typeId1:0,typeId2:1},
+                {prodNam:'Tandoori Chicken (Full)',typeId1:0,typeId2:1},
+                {prodNam:'Starbucks',typeId1:0,typeId2:1},
+                {prodNam:'Red Chilies',typeId1:0,typeId2:6},
+            ],
+            mobileShowCategories:window.innerWidth < 768,
+            typeOpen:true,
+            tabsOpen:0,
+            typeActive:0,
+            typeofProd:['Recomended (40)',
+            'DPB Special Combos (10)',
+            'Chineese Staters (30)',
+            'Chinese Main Course (75)',
+            'Indian Main Course (63)',
+            'Rice & Pulao (7)',
+            'Desserts (1)',
+            'Soup & wonton (15)',
+            'Accompaniment (4)',
+            'Biryani (1)'
+        ],
+            tagsActive:0,
+            menuTags:['Order Online','Book A Table','Reviews'],
         };
     },
 
-    mounted() {
-        
-    },
 
     methods: {
         getImageUrl(paths) {
             //取得圖片路徑
             return new URL(`../assets/images/${paths}`, import.meta.url).href;
         },
+        activeTags(i){
+            this.tagsActive =i;
+            this.tabsOpen = i;
+        },
+        activeTypes(i){
+            this.typeActive =i;
+            this.chooseIndex=i;
+        },
+        handelResize(){
+            //視窗小於768px
+            this.mobileShowCategories = window.innerWidth < 768;
+            if (this.mobileShowCategories) {
+                this.typeOpen=false
+            }else{
+                this.typeOpen=true
+            }
+        },
+        OpenCategories() {
+        this.typeOpen = !this.typeOpen
+        },
+
+
     },
+    mounted() {
+        window.addEventListener('resize', this.handelResize);
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.handelResize);
+    },
+
 };
 </script>

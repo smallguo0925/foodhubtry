@@ -10,23 +10,12 @@
             </ul>
             <div class="filter">
                 <div class="typeFilter">
-                    <div class="type" @click="activeType(0)" :class="{'tabActive' : filterTypeActive === 0}">
-                        Delivery
-                        <span :class="{ 'underline': filterTypeActive === 0 }"></span>
-                        <span :class="{ 'typeHover': filterTypeActive === 0 }"></span>
+                    <div class="type" v-for="(item,index) in types" @click="activeType(index)" :class="{'tabActive' : filterTypeActive === index}">
+                        {{item}}
+                        <span :class="{ 'underline': filterTypeActive === index }"></span>
+                        <span :class="{ 'typeHover': filterTypeActive === index }"></span>
                     </div>
-                    <div class="type" @click="activeType(1)"
-                    :class="{'tabActive' : filterTypeActive === 1}">
-                        Dining Out
-                        <span :class="{ 'underline': filterTypeActive === 1 }"></span>
-                        <span :class="{ 'typeHover': filterTypeActive === 1 }"></span>
-                    </div>
-                    <div class="type" @click="activeType(2)"
-                    :class="{'tabActive' : filterTypeActive === 2}">
-                        Nightlife
-                        <span :class="{ 'underline': filterTypeActive === 2 }"></span>
-                        <span :class="{ 'typeHover': filterTypeActive === 2 }"></span>
-                    </div>
+
 
                 </div>
                 <button type="button">FILTER</button>
@@ -105,6 +94,7 @@ export default {
 
     data() {
         return {
+            types:['Delivery','Dining Out','Nightlife'],
             costValue:[0,100],
             mobileShowCategories:window.innerWidth < 768,
             CategoriesOpen:true,

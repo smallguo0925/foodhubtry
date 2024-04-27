@@ -27,6 +27,7 @@
         @for $i from 1 through $col {
             .col-#{$i} {
                 width: calc(100% / $col) * $i;
+                padding: 4px;
             }
         }
     }
@@ -35,7 +36,7 @@
         @for $i from 1 through $col {
             .col-#{$b}-#{$i} {
                 width: calc(100% / $col) * $i;
-
+                padding: 4px;
             }
         }
     }
