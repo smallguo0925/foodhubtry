@@ -248,7 +248,7 @@ export default {
                 {id:4,prodNam:'Red Chilies',typeId1:0,typeId2:6,price:10,prodImg:'popular4.jpg'},
             ],
             mobileShowCategories:window.innerWidth < 768,
-            typeOpen:false,
+            typeOpen:true,
             tabsOpen:0,
             typeActive:0,
             typeofProd:['Recomended (40)',
