@@ -62,7 +62,7 @@
     </section>
 
     <!-- 這裡要再放MainHeader -->
-    <Mainheader />
+    <Mainheader v-if="visible"/>
 
     <section class="goToMenu">
       <div class="cardContent container">
@@ -198,6 +198,12 @@ export default {
     getImageUrl(paths) {
       //取得圖片路徑
       return new URL(`../assets/images/${paths}`, import.meta.url).href;
+    },
+    handleScroll(){
+      //取得banner的高度
+      const bannerHeight = document.querySelector('.banner').offsetheight;
+      //滾超過banner高度就讓visible=true
+      this.visible=window.scrollY>bannerHeight
     },
   },
   mounted() {
