@@ -51,6 +51,7 @@
                 display: flex;
                 align-items: center;
                 opacity: 0.8;
+                cursor: pointer;
             }
             .menu{
                 border: none;
@@ -58,34 +59,48 @@
                 cursor: pointer;
             }
             .hamWrapper{
-                top: 0px;
+                top: 0;
                 left: 0;
                 transform: translateX(0%);
                 position: fixed;
                 height: 100%;
                 width: 100%;
                 background-color: rgba($color: $black, $alpha: 0.2);
+                // margin: 15px;
             }
             .openMenu{
                 height: 100%;
                 top: 0px;
                 left: 0;
                 transform: translateX(0%);
-                position: relative;
+                position: absolute;
                 width: 300px;
-                background-color: #666;
+                background-color: rgba($color: $white, $alpha: 1);
                 display: flex;
                 flex-direction: column;
-                padding: 0 12px;
+                // padding: 0 15px;
                 .hamTitle{
-                    margin-top: 12px;
+                    padding: 12px;
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
-                    color: $white;
+                    color: rgba($color: $black, $alpha: .7);    
+                    
+                }
+                .closeIcon{
+                    cursor: pointer;
+                }
+                .navbarItem{
+                    padding: 12px;;
+                    cursor: pointer;
+                    @include text;
+                    &:hover{
+                        background-color: rgba($color: $black, $alpha: .2);
+                        color: $mp;
+                    }
                 }
             }
-    
+        
         }
         .headerText{
             flex-direction: column;
@@ -172,6 +187,103 @@
                 }    
 
             }
+        }
+        .cartMenu{
+            transition: all 1s ease ;
+            top: 0px;
+            right: 0;
+            transform: translateX(0%);
+            position: fixed;
+            height: 100%;
+            width: 360px;
+            background-color: rgba($color: $white, $alpha: 1);
+            box-shadow: -.1px 0px 100px .5px $black;
+            z-index: 999;
+            padding: 30px 15px;
+
+            @include text;
+            .cartWrapper{
+                display: flex;
+                flex-direction: column;
+            }
+            .cartTitle{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            // padding: 30px 15px;
+            padding-bottom:10px;
+            border-bottom: 1px solid rgba($color: $black, $alpha: 0.2);
+                i{
+                    cursor: pointer;
+                }
+            }
+            .cartItem{
+                display: flex;
+                margin: 30px 0;
+                justify-content: space-between;
+                align-items: center;
+                .addSubtract{
+                    display: flex;
+                    flex-direction: column;
+                    width: 28px;
+                    margin-right: 12px;
+                    align-items: center;
+                    button{
+                        width: 24px;
+                        height: 24px;
+                        background-color: rgba($color: $white, $alpha: 0);
+                        border: 1px solid $mp;
+                        border-radius: 50%;
+                    }
+                    input{
+                        text-align: center;
+                        border: none;
+                        margin: 3px 0;
+                        font-size: 16px;
+                    }
+                }
+                .prodPic{
+                    display: flex;
+                    align-items: center;
+                    width: 64px;
+                    height: 64px;
+                    margin-right: 12px;
+                    img{
+                        border-radius: 8px;
+                        width: 100%;
+                        vertical-align: top;
+                    }
+                }
+                .prodInfo{
+                    display: flex;
+                    flex-direction: column;
+                }
+                .prodInfo span:last-child{
+                    color: $mp;
+                    font-weight: bold;
+                }
+                
+            }
+            .cartItemLeft{
+                display: flex;
+            }
+            .closeIcon{
+                width: 36px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+
+        }
+        .cartMenu::after{
+            content: '';
+            width: 200vh;
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: -200vh;
+            background-color: rgba($color: $black, $alpha: 0.2);
         }
 
 

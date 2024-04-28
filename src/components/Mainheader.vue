@@ -29,8 +29,8 @@
               <img src="../assets/images/accountIcon.svg" alt="account">
               <span class="accountName">ACCOUNT</span>
           </div>
-          <div class="cart">
-            <i class="fa-solid fa-cart-shopping" @click="Opencart()"></i>
+          <div class="cart" @click="Opencart()">
+            <i class="fa-solid fa-cart-shopping" ></i>
             <span>(8)</span>
           </div>
           
@@ -47,35 +47,47 @@
               <span>Navbar</span>
               <i class="fa-solid fa-xmark  closeIcon"  @click="Openmenu()"></i>
             </div>
+            <div class="navbarContent">
+              <div class="navbarItem" v-for="(item,index) in navbar">
+              {{ item }}
+              </div>
+            </div>
           </div>
         </aside>
       </transition>
       
       <!-- 購物車選單 -->
-      <Drawer title="Basic Drawer" :closable="true" v-model="cartOpen" >
-        <div class="cartWrapper" v-for="(item,index) in cartData" :key="item.id">
+      <div class="cartMenu" v-if="cartOpen">
+        <div class="cartTitle">
+          <div class="cartTitleLeft"><i class="fa-solid fa-bag-shopping" style="margin-right: 10px;"></i>Item</div>
+          <i class="fa-solid fa-xmark fa-xl" style="color: #D23F57;" @click="Opencart()" ></i>
+        </div>
+        <div class="cartWrapper row" v-for="(item,index) in cartData" :key="item.id" >
           <div class="cartItem" >
-            <div class="addSubtract">
-              <!-- 加減盒 -->
-              <button class="add"><i class="fa-solid fa-plus"></i></button>
+            <div class="cartItemLeft">
+              <div class="addSubtract">
+                <!-- 加減盒 -->
+                <button class="add"><i class="fa-solid fa-plus" style="color: #D23F57;"></i></button>
+                <input type="number" placeholder="1" disabled>
+                <button class="sub"><i class="fa-solid fa-minus" style="color: #D23F57;"></i></button>
+              </div>
+              <div class="prodPic">
+                <img src="../assets/images/reviews1.png" class="prodPic">
+              </div>
+              <div class="prodInfo">
+                <!-- 商品資訊 -->
+                {{ item.name }}
+                <span>${{ item.price }}x1</span>
+                <span>{{ item.price }}</span>
               
-              <button class="sub"><i class="fa-solid fa-minus"></i></button>
+              </div>
             </div>
-            <div class="prodPic">
-              <img src="../assets/images/reviews1.png" class="prodPic">
+            <div class="closeIcon">
+              <i class="fa-solid fa-xmark fa-xl closeIcon" style="color: gray;"></i>
             </div>
-            <div class="prodInfo">
-              <!-- 商品資訊 -->
-              {{ item.name }}
-              $<span>{{ item.price }}</span>x1
-              
-            </div>
-          </div>
-          <div class="closeIcon">
-          
           </div>
         </div>
-      </Drawer>
+      </div>
     </div>
 
 
@@ -94,9 +106,10 @@ import { mapState, mapActions } from "pinia";
 export default {
     data() {
         return {
-            menuOpen: false,
-            cartOpen:false,
-            piniaCart:[],
+          menuOpen: false,
+          cartOpen:false,
+          piniaCart:[],
+          navbar:['Dashboards','Review','Photos','Order List','Order History','Followers','Bookmarks','Restaurant'],
         }
     },
     computed: {

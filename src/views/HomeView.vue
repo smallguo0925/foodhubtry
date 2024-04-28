@@ -10,7 +10,7 @@
               <img src="../assets/images/accountIcon.svg" alt="account">
               <span class="accountName">ACCOUNT</span>
             </div>
-            <div class="cart">
+            <div class="cart" @click="Opencart()">
               <i class="fa-solid fa-cart-shopping"></i>
               <span>(8)</span>
             </div>
@@ -21,15 +21,54 @@
           </div>
           <!--  漢堡選單 -->
           <transition name="slide-left">
-            <aside class="hamWrapper " v-if="menuOpen">
-              <div class="openMenu">
-                <div class="hamTitle">
-                  <span>Navbar</span>
-                  <i class="fa-solid fa-xmark  closeIcon" @click="Openmenu()"></i>
-                </div>
+        <aside class="hamWrapper " v-if="menuOpen">
+          <div class="openMenu">
+            <div class="hamTitle">
+              <span>Navbar</span>
+              <i class="fa-solid fa-xmark  closeIcon"  @click="Openmenu()"></i>
+            </div>
+            <div class="navbarContent">
+              <div class="navbarItem" v-for="(item,index) in navbar">
+              {{ item }}
               </div>
-            </aside>
-          </transition>
+            </div>
+          </div>
+        </aside>
+      </transition>
+
+                <!-- 購物車選單 -->
+      <div class="cartMenu" v-if="cartOpen">
+        <div class="cartTitle">
+          <div class="cartTitleLeft"><i class="fa-solid fa-bag-shopping" style="margin-right: 10px;"></i>Item</div>
+          <i class="fa-solid fa-xmark fa-xl" style="color: #D23F57;" @click="Opencart()" ></i>
+        </div>
+        <div class="cartWrapper row" v-for="(item,index) in cartData" :key="item.id" >
+          <div class="cartItem" >
+            <div class="cartItemLeft">
+              <div class="addSubtract">
+                <!-- 加減盒 -->
+                <button class="add"><i class="fa-solid fa-plus" style="color: #D23F57;"></i></button>
+                <input type="number" placeholder="1" disabled>
+                <button class="sub"><i class="fa-solid fa-minus" style="color: #D23F57;"></i></button>
+              </div>
+              <div class="prodPic">
+                <img src="../assets/images/reviews1.png" class="prodPic">
+              </div>
+              <div class="prodInfo">
+                <!-- 商品資訊 -->
+                {{ item.name }}
+                <span>${{ item.price }}x1</span>
+                <span>{{ item.price }}</span>
+              
+              </div>
+            </div>
+            <div class="closeIcon">
+              <i class="fa-solid fa-xmark fa-xl closeIcon" style="color: gray;"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
         </div>
       </div>
@@ -174,6 +213,9 @@ import productCard from "@/components/productCard.vue"
 export default {
   data() {
     return {
+      navbar:['Dashboards','Review','Photos','Order List','Order History','Followers','Bookmarks','Restaurant'],
+
+      cartOpen:false,
       emailSelected: false,
       phoneSelected: false,
       menuOpen: false,
@@ -192,6 +234,10 @@ export default {
     }
   },
   methods: {
+    Opencart(){
+          this.cartOpen=!this.cartOpen
+        },
+
     Openmenu() {
       this.menuOpen = !this.menuOpen
     },
