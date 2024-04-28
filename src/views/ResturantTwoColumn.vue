@@ -100,7 +100,7 @@ export default {
             types: ['Delivery', 'Dining Out', 'Nightlife'],
             costValue: [0, 100],
             mobileShowCategories: window.innerWidth < 768,
-            CategoriesOpen: true,
+            CategoriesOpen: false,
             filterTypeActive: 0,
             prod: [
                 { name: 'Starbucks', tag: true, type: 'Pizza' },
