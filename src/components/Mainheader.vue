@@ -67,9 +67,9 @@
             <div class="cartItemLeft">
               <div class="addSubtract">
                 <!-- 加減盒 -->
-                <button class="add"><i class="fa-solid fa-plus" style="color: #D23F57;"></i></button>
-                <input type="number" placeholder="1" disabled>
-                <button class="sub"><i class="fa-solid fa-minus" style="color: #D23F57;"></i></button>
+                <button class="add"><i class="fa-solid fa-plus" style="color: #D23F57;" @click="quantityChangePlus(index)"></i></button>
+                <input type="number" :value="item.count" readonly>
+                <button class="sub"><i class="fa-solid fa-minus" style="color: #D23F57;" @click="quantityChangeMinus(index)"></i></button>
               </div>
               <div class="prodPic">
                 <img src="../assets/images/reviews1.png" class="prodPic">
@@ -77,13 +77,13 @@
               <div class="prodInfo">
                 <!-- 商品資訊 -->
                 {{ item.name }}
-                <span>${{ item.price }}x1</span>
-                <span>{{ item.price }}</span>
+                <span>${{ item.price }}x{{ item.count }}</span>
+                <span>{{ item.price * item.count }}</span>
               
               </div>
             </div>
             <div class="closeIcon">
-              <i class="fa-solid fa-xmark fa-xl closeIcon" style="color: gray;"></i>
+              <i class="fa-solid fa-xmark fa-xl closeIcon" style="color: gray;" @click="itemChangeDel(index)"></i>
             </div>
           </div>
         </div>
@@ -122,6 +122,12 @@ export default {
         ]),
     },
     methods: {
+      ...mapActions(useCartStore, [
+      "getLocalCartData",
+      'reduceFromCart',
+      'increaseFromCart',
+      'itemDelFormCart',
+      ]),
         Openmenu(){
           this.menuOpen=!this.menuOpen
             
@@ -133,9 +139,16 @@ export default {
             //取得圖片路徑
             return new URL(`../assets/images/${paths}`, import.meta.url).href;
         },
-        ...mapActions(useCartStore, [
-        "getLocalCartData",
-        ]),
+        quantityChangeMinus(product) {
+          this.reduceFromCart(this.cartData[product]);
+        },
+        quantityChangePlus(product) {
+          this.increaseFromCart(this.cartData[product]);
+        },
+        itemChangeDel(product) {
+          this.itemDelFormCart(this.cartData[product]);
+        },
+
         
 
 
