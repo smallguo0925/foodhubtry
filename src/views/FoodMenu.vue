@@ -229,6 +229,7 @@
 
 <script>
 import { useCartStore } from "../stores/cart";//引入pinia
+import { mapState, mapActions } from "pinia";
 
 export default {
 
@@ -247,7 +248,7 @@ export default {
                 {id:4,prodNam:'Red Chilies',typeId1:0,typeId2:6,price:10,prodImg:'popular4.jpg'},
             ],
             mobileShowCategories:window.innerWidth < 768,
-            typeOpen:true,
+            typeOpen:false,
             tabsOpen:0,
             typeActive:0,
             typeofProd:['Recomended (40)',
@@ -266,6 +267,10 @@ export default {
         };
     },
     methods: {
+        ...mapActions(useCartStore, [
+        "getLocalCartData",
+        ]),
+
         getImageUrl(paths) {
             //取得圖片路徑
             return new URL(`../assets/images/${paths}`, import.meta.url).href;
@@ -305,8 +310,18 @@ export default {
             )
             this.piniaData=cartStore.cartData
             console.log(this.piniaData);
+            
+            this.getLocalCartData();
         },
 
+
+    },
+    computed: {
+    //使用 mapState 輔助函數將/src/stores/cart裡的state/data 映射在這裡
+    // !!!要寫在computed
+    ...mapState(useCartStore, [
+        "cartData",
+        ]),
     },
     mounted() {
         window.addEventListener('resize', this.handelResize);
@@ -314,7 +329,10 @@ export default {
     beforeDestroy() {
         window.removeEventListener('resize', this.handelResize);
     },
-    
+    created() {
+    this.getLocalCartData();
+    },
+
 
 };
 </script>

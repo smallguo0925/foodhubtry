@@ -163,6 +163,10 @@ export default {
             }
         },
     },
+    created() {
+        this.filterCategories()
+    },
+    
     mounted() {
         window.addEventListener('resize', this.handelResize);
     },

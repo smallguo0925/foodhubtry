@@ -52,11 +52,14 @@
       </transition>
       
       <!-- 購物車選單 -->
-      <Drawer title="Basic Drawer" :closable="true" v-model="cartOpen" transfer	="true">
-        <div class="cartWrapper" v-for="(item,index) in piniaCart">
+      <Drawer title="Basic Drawer" :closable="true" v-model="cartOpen" >
+        <div class="cartWrapper" v-for="(item,index) in cartData" :key="item.id">
           <div class="cartItem" >
             <div class="addSubtract">
-              <!-- 加減盒 -->+-{{ item }}
+              <!-- 加減盒 -->
+              <button class="add"><i class="fa-solid fa-plus"></i></button>
+              
+              <button class="sub"><i class="fa-solid fa-minus"></i></button>
             </div>
             <div class="prodPic">
               <img src="../assets/images/reviews1.png" class="prodPic">
@@ -86,6 +89,8 @@
 <script>
 import { RouterLink } from "vue-router";
 import { useCartStore } from "../stores/cart";//引入pinia
+import { mapState, mapActions } from "pinia";
+
 export default {
     data() {
         return {
@@ -93,6 +98,15 @@ export default {
             cartOpen:false,
             piniaCart:[],
         }
+    },
+    computed: {
+    //使用 mapState 輔助函數將/src/stores/cart裡的state/data 映射在這裡
+    // !!!要寫在computed
+    ...mapState(useCartStore, [
+        "cartData",
+        "totalNumofCart",
+        "getQuantityById",
+        ]),
     },
     methods: {
         Openmenu(){
@@ -106,6 +120,11 @@ export default {
             //取得圖片路徑
             return new URL(`../assets/images/${paths}`, import.meta.url).href;
         },
+        ...mapActions(useCartStore, [
+        "getLocalCartData",
+        ]),
+        
+
 
     },
     mounted() {
@@ -113,11 +132,10 @@ export default {
     this.$router.afterEach(() => {
       this.menuOpen = false; // 關閉漢堡選單
     });
-
-    const cartData = JSON.parse(localStorage.getItem("addCart")); 
-    this.piniaCart=cartData
-    console.log(this.piniaCart);
-
     },
+    created() {
+    this.getLocalCartData();
+    },
+
 }
 </script>
