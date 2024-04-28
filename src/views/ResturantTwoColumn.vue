@@ -25,7 +25,7 @@
             <div class="menuWrapper row">
                 <div class="col-PC-12 col-12">
                     <div class="box">
-                        <div class="menuLeft" :class="{ 'mobileMenu': mobileShowCategories }" v-if="CategoriesOpen">
+                        <div class="menuLeft" :class="{ 'mobileMenu': mobileShowCategories }" v-show="CategoriesOpen">
                             <div class="categoriesContent ">
                                 <div class="categoriesTitle">
                                     <h3>Categories</h3>
@@ -100,7 +100,7 @@ export default {
             types: ['Delivery', 'Dining Out', 'Nightlife'],
             costValue: [0, 100],
             mobileShowCategories: window.innerWidth < 768,
-            CategoriesOpen: false,
+            CategoriesOpen: true,
             filterTypeActive: 0,
             prod: [
                 { name: 'Starbucks', tag: true, type: 'Pizza' },
