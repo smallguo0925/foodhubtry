@@ -62,7 +62,7 @@
     </section>
 
     <!-- 這裡要再放MainHeader -->
-    <Mainheader v-if="visible"/>
+    <Mainheader />
 
     <section class="goToMenu">
       <div class="cardContent container">
@@ -205,7 +205,13 @@ export default {
     this.$router.afterEach(() => {
       this.menuOpen = false; // 關閉漢堡選單
     });
+    // 監聽滾動事件
+    window.addEventListener('scroll', this.handleScroll);
 
+  },
+  destroyed() {
+    // 組件被摧毀時移除滾動事件監聽器
+    window.removeEventListener('scroll', this.handleScroll);
   },
   components:{
     Mainheader,
