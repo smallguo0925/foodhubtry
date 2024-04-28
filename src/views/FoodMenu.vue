@@ -94,7 +94,7 @@
                                                 Categories
                                             </button>
                                             <h2 class="col-12">{{this.typeofProd[chooseIndex].replace(/\s*\(\d+\)/, '') }}</h2>
-                                            <div class="col-12 col-PC-12 prodContent" v-for="(prod,prodIndex) in prodContent">
+                                            <div class="col-12 col-PC-12 prodContent" v-for="(prod,prodIndex) in prodContent" :key="prodIndex" v-show="this.typeActive===prod.typeId1 || this.typeActive===prod.typeId2">
                                                 <div class="prodCard"> 
                                                     <div class="prodPic"></div>
                                                     <div class="prodText">
@@ -105,14 +105,14 @@
                                                             　(57)
                                                         </span>
                                                         <p>
-                                                            <span class="twentyFive">$25</span>
-                                                            <span class="twentyTwo">$22.5</span>
+                                                            <span class="twentyFive">$99</span>
+                                                            <span class="twentyTwo">${{prod.price}}</span>
                                                             <span class="cost10">10% off</span>
                                                         </p>
                                                         <span>(4 Pcs mutton in chicken keema gravy)</span>
                                                     </div>
                                                 </div>
-                                                <button class="add">
+                                                <button class="add" @click="addCart(prodIndex)">
                                                     ADD　+
                                                 </button>
 
@@ -228,20 +228,23 @@
 </template>
 
 <script>
+import { useCartStore } from "../stores/cart";//引入pinia
+
 export default {
 
     data() {
         return {
+            piniaData:[],
             people:[
                 'Abriella Bond','Emmet McDermott','Abriella Bond'
             ],
             inputPlaceholder:['First Name','Last Name','Email','Phone'],
             chooseIndex:0,
             prodContent:[
-                {prodNam:'Tandoori Chicken (Full)',typeId1:0,typeId2:1},
-                {prodNam:'Tandoori Chicken (Full)',typeId1:0,typeId2:1},
-                {prodNam:'Starbucks',typeId1:0,typeId2:1},
-                {prodNam:'Red Chilies',typeId1:0,typeId2:6},
+                {id:1,prodNam:'Tandoori Chicken (Full)',typeId1:0,typeId2:1,price:50,prodImg:'popular4.jpg'},
+                {id:2,prodNam:'Woondal',typeId1:0,typeId2:1,price:22.5,prodImg:'popular4.jpg'},
+                {id:3,prodNam:'Starbucks',typeId1:0,typeId2:1,price:30,prodImg:'popular4.jpg'},
+                {id:4,prodNam:'Red Chilies',typeId1:0,typeId2:6,price:10,prodImg:'popular4.jpg'},
             ],
             mobileShowCategories:window.innerWidth < 768,
             typeOpen:true,
@@ -262,8 +265,6 @@ export default {
             menuTags:['Order Online','Book A Table','Reviews'],
         };
     },
-
-
     methods: {
         getImageUrl(paths) {
             //取得圖片路徑
@@ -289,7 +290,22 @@ export default {
         OpenCategories() {
         this.typeOpen = !this.typeOpen
         },
+        addCart(i){
+            const cartStore = useCartStore()
 
+            //把加入購物車的資料放進pinia
+            cartStore.addCart(
+                {id:this.prodContent[i].id,
+                typeId1:this.prodContent[i].typeId1,
+                typeId2:this.prodContent[i].typeId2,
+                name:this.prodContent[i].prodNam,
+                price:this.prodContent[i].price,
+                prodImg:this.prodContent[i].prodImg
+                }
+            )
+            this.piniaData=cartStore.cartData
+            console.log(this.piniaData);
+        },
 
     },
     mounted() {
@@ -298,6 +314,7 @@ export default {
     beforeDestroy() {
         window.removeEventListener('resize', this.handelResize);
     },
+    
 
 };
 </script>

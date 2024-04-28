@@ -195,12 +195,6 @@ export default {
     Openmenu() {
       this.menuOpen = !this.menuOpen
     },
-    handleScroll() {
-      // 取得 banner 的高度
-      const bannerHeight = document.querySelector('.banner').offsetHeight;
-      // 滾動超過 banner 的高度時，顯示 Mainheader
-      this.visible = window.scrollY > bannerHeight;
-    },
     getImageUrl(paths) {
       //取得圖片路徑
       return new URL(`../assets/images/${paths}`, import.meta.url).href;
@@ -211,13 +205,7 @@ export default {
     this.$router.afterEach(() => {
       this.menuOpen = false; // 關閉漢堡選單
     });
-    // 監聽滾動事件
-    window.addEventListener('scroll', this.handleScroll);
 
-  },
-  destroyed() {
-    // 組件被摧毀時移除滾動事件監聽器
-    window.removeEventListener('scroll', this.handleScroll);
   },
   components:{
     Mainheader,

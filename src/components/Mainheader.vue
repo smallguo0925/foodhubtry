@@ -30,7 +30,7 @@
               <span class="accountName">ACCOUNT</span>
           </div>
           <div class="cart">
-            <i class="fa-solid fa-cart-shopping"></i>
+            <i class="fa-solid fa-cart-shopping" @click="Opencart()"></i>
             <span>(8)</span>
           </div>
           
@@ -50,6 +50,29 @@
           </div>
         </aside>
       </transition>
+      
+      <!-- 購物車選單 -->
+      <Drawer title="Basic Drawer" :closable="true" v-model="cartOpen" transfer	="true">
+        <div class="cartWrapper" v-for="(item,index) in piniaCart">
+          <div class="cartItem" >
+            <div class="addSubtract">
+              <!-- 加減盒 -->+-{{ item }}
+            </div>
+            <div class="prodPic">
+              <img src="../assets/images/reviews1.png" class="prodPic">
+            </div>
+            <div class="prodInfo">
+              <!-- 商品資訊 -->
+              {{ item.name }}
+              $<span>{{ item.price }}</span>x1
+              
+            </div>
+          </div>
+          <div class="closeIcon">
+          
+          </div>
+        </div>
+      </Drawer>
     </div>
 
 
@@ -62,24 +85,38 @@
 
 <script>
 import { RouterLink } from "vue-router";
-
+import { useCartStore } from "../stores/cart";//引入pinia
 export default {
     data() {
         return {
             menuOpen: false,
+            cartOpen:false,
+            piniaCart:[],
         }
     },
     methods: {
         Openmenu(){
-            this.menuOpen=!this.menuOpen
+          this.menuOpen=!this.menuOpen
             
-        }
+        },
+        Opencart(){
+          this.cartOpen=!this.cartOpen
+        },
+        getImageUrl(paths) {
+            //取得圖片路徑
+            return new URL(`../assets/images/${paths}`, import.meta.url).href;
+        },
+
     },
     mounted() {
-        // 監聽路由切換
+    // 監聽路由切換
     this.$router.afterEach(() => {
       this.menuOpen = false; // 關閉漢堡選單
     });
+
+    const cartData = JSON.parse(localStorage.getItem("addCart")); 
+    this.piniaCart=cartData
+    console.log(this.piniaCart);
 
     },
 }
